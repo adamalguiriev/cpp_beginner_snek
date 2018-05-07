@@ -21,6 +21,7 @@
 #include "MainWindow.h"
 #include "Game.h"
 #include "SpriteCodex.h"
+#include <chrono>
 
 //testing
 #include "TestLocation.h"
@@ -121,6 +122,9 @@ void Game::ChangeSnakeBodyColor()
 
 void Game::ComposeFrame()
 {
+	using std::chrono::steady_clock;
+	steady_clock::time_point start = steady_clock::now();
+
 	if (m_started)
 	{
 		m_board.DrawBorders();
@@ -144,4 +148,9 @@ void Game::ComposeFrame()
 	//		m_board.DrawCell(loc, c);
 	//	}
 	//}
+
+	steady_clock::time_point end = steady_clock::now();
+
+	std::chrono::duration<float> runtime = end - start;
+	float runtimeSec = runtime.count();
 }

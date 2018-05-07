@@ -108,8 +108,10 @@ bool Snake::CollectNode(Node & rNode)
 
 bool Snake::HitsBorder(const Location& nextLoc) const
 {
-	if ((nextLoc >= Board::End - 1) ||
-		(nextLoc <= Board::Start - 1))
+	if ((nextLoc.x < Board::Start.x) ||
+		(nextLoc.x >= Board::End.x) ||
+		(nextLoc.y < Board::Start.y) ||
+		(nextLoc.y >= Board::End.y))
 	{
 		return true;
 	}
