@@ -22,6 +22,7 @@ void Board::DrawBorders()
 	}
 }
 
+//TODO: Add cell padding
 void Board::DrawCell(const Location loc, Color c)
 {
 	assert(loc.x >= 0);
